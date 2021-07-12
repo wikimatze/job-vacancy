@@ -6,7 +6,7 @@ JobVacancy::App.controllers :password_forget do
   post :create do
     @user = User.find_by_email(params[:email])
 
-    if @user
+    if@user
       @user.save_forget_password_token
 
       link = 'http://localhost:3000' + url(:password_forget, :edit, token: @user.password_reset_token)
